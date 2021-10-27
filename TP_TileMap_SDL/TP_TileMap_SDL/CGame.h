@@ -11,6 +11,8 @@
 const int WWIDTH = 1200;
 const int WHEIGHT = 880;
 
+const int SIZETILE = 80;
+
 using namespace std;
 
 class CGame {
@@ -22,8 +24,8 @@ private:
 
 	CTextureManager textureManager;
 
-	int map [WHEIGHT / 60][WWIDTH / 60];
-	int deco[WHEIGHT / 60][WWIDTH / 60];
+	int map [WHEIGHT / SIZETILE][WWIDTH / SIZETILE];
+	int deco[WHEIGHT / SIZETILE][WWIDTH / SIZETILE];
 
 
 

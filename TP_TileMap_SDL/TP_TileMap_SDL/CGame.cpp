@@ -8,9 +8,15 @@ CGame::CGame()
 	pWindow = NULL;
 	pRenderer = NULL;
 
-	for (int n_i = 0; n_i < WHEIGHT / 60; n_i++) {
-		for (int n_j = 0; n_j < WWIDTH / 60; n_j++) {
+	for (int n_i = 0; n_i < WHEIGHT / SIZETILE; n_i++) {
+		for (int n_j = 0; n_j < WWIDTH / SIZETILE; n_j++) {
 			map[n_i][n_j] = 0;
+		}
+	}
+
+	for (int n_i = 0; n_i < WHEIGHT / SIZETILE; n_i++) {
+		for (int n_j = 0; n_j < WWIDTH / SIZETILE; n_j++) {
+			deco[n_i][n_j] = 0;
 		}
 	}
 }
@@ -92,13 +98,13 @@ void CGame::render()
 	//Draw the tile
 	for (int n_i = 0; n_i < 11; n_i++) {
 		for (int n_j = 0; n_j < 15; n_j++) {
-			textureManager.drawTile("tile", n_j, n_i, 80, 80, pRenderer, map[n_i][n_j], 3);
+			textureManager.drawTile("tile", n_j, n_i, SIZETILE, SIZETILE, pRenderer, map[n_i][n_j], 3);
 		}
 	}
 
 	for (int n_i = 0; n_i < 11; n_i++) {
 		for (int n_j = 0; n_j < 15; n_j++) {
-			textureManager.drawTile("deco", n_j, n_i, 80, 80, pRenderer, deco[n_i][n_j], 10);
+			textureManager.drawTile("deco", n_j, n_i, SIZETILE, SIZETILE, pRenderer, deco[n_i][n_j], 10);
 		}
 	}
 
