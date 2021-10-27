@@ -8,6 +8,11 @@ CGame::CGame()
 	pWindow = NULL;
 	pRenderer = NULL;
 
+	for (int n_i = 0; n_i < WHEIGHT / 60; n_i++) {
+		for (int n_j = 0; n_j < WWIDTH / 60; n_j++) {
+			map[n_i][n_j] = 0;
+		}
+	}
 }
 
 CGame::~CGame()
@@ -55,6 +60,7 @@ bool CGame::init(const char* title, int xpos, int ypos, int flags)
 	textureManager.loadPNG("./Assets/tileMap.png", "tile", pRenderer);
 	mymap.open("map.txt");
 
+	//Get the information of the tile in the array
 	for (int n_i = 0; n_i < 11; n_i++) {
 		for (int n_j = 0; n_j < 15; n_j++) {
 			mymap >> map[n_i][n_j];
@@ -70,10 +76,8 @@ void CGame::render()
 	//Background
 	SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
 	SDL_RenderClear(pRenderer); // clear the renderer to the draw color
-	/*for (int n_i = 0; n_i < 6; n_i++) {
-		textureManager.drawTile("tile", n_i, 0, 60, 60, pRenderer, n_i);
-	}*/
 
+	//Draw the tile
 	for (int n_i = 0; n_i < 11; n_i++) {
 		for (int n_j = 0; n_j < 15; n_j++) {
 			textureManager.drawTile("tile", n_j, n_i, 80, 80, pRenderer, map[n_i][n_j]);

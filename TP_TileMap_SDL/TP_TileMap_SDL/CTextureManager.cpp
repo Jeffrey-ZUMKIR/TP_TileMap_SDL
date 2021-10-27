@@ -50,6 +50,7 @@ void CTextureManager::drawTile(std::string id, int x, int y, int width, int heig
 	destRect.h = srcRect.h = height;
 	destRect.x = x*width;
 	destRect.y = y*width;
+	//Get the correct tile
 	srcRect.x = (nbTile % 3) * width;
 	srcRect.y = nbTile / 3 * width;
 	
