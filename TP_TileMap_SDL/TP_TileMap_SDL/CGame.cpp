@@ -58,7 +58,7 @@ bool CGame::init(const char* title, int xpos, int ypos, int flags)
 
 	ifstream mymap;
 	textureManager.loadPNG("./Assets/tileMap.png", "tile", pRenderer);
-	mymap.open("map.txt");
+	mymap.open("Map.txt");
 
 	//Get the information of the tile in the array
 	for (int n_i = 0; n_i < 11; n_i++) {
@@ -66,6 +66,18 @@ bool CGame::init(const char* title, int xpos, int ypos, int flags)
 			mymap >> map[n_i][n_j];
 		}
 	}
+	mymap.close();
+
+	textureManager.loadPNG("./Assets/TM_Meuble.png", "deco", pRenderer);
+	mymap.open("Deco.txt");
+
+	//Get the information of the tile in the array
+	for (int n_i = 0; n_i < 11; n_i++) {
+		for (int n_j = 0; n_j < 15; n_j++) {
+			mymap >> deco[n_i][n_j];
+		}
+	}
+	mymap.close();
 
 
 	std::cout << "init success\n";
@@ -80,7 +92,13 @@ void CGame::render()
 	//Draw the tile
 	for (int n_i = 0; n_i < 11; n_i++) {
 		for (int n_j = 0; n_j < 15; n_j++) {
-			textureManager.drawTile("tile", n_j, n_i, 80, 80, pRenderer, map[n_i][n_j]);
+			textureManager.drawTile("tile", n_j, n_i, 80, 80, pRenderer, map[n_i][n_j], 3);
+		}
+	}
+
+	for (int n_i = 0; n_i < 11; n_i++) {
+		for (int n_j = 0; n_j < 15; n_j++) {
+			textureManager.drawTile("deco", n_j, n_i, 80, 80, pRenderer, deco[n_i][n_j], 10);
 		}
 	}
 

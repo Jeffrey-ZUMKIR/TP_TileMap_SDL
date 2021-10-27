@@ -23,6 +23,6 @@ public:
 
 	// draw
 	void drawPNG(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
-	void drawTile(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, int nbTile, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void drawTile(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, int nbTile, int widthTM, SDL_RendererFlip flip = SDL_FLIP_NONE);
 protected:
 };

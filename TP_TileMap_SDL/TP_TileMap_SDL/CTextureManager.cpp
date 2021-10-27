@@ -41,7 +41,7 @@ void CTextureManager::drawPNG(std::string id, int x, int y, int width, int heigh
 }
 
 //GOAL	: Display tile
-void CTextureManager::drawTile(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, int nbTile, SDL_RendererFlip flip)
+void CTextureManager::drawTile(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, int nbTile, int widthTM, SDL_RendererFlip flip)
 {
 	SDL_Rect destRect;
 	SDL_Rect srcRect;
@@ -51,8 +51,8 @@ void CTextureManager::drawTile(std::string id, int x, int y, int width, int heig
 	destRect.x = x*width;
 	destRect.y = y*width;
 	//Get the correct tile
-	srcRect.x = (nbTile % 3) * width;
-	srcRect.y = nbTile / 3 * width;
+	srcRect.x = (nbTile % widthTM) * width;
+	srcRect.y = nbTile / widthTM * width;
 	
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }

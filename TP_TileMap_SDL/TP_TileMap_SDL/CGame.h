@@ -23,6 +23,7 @@ private:
 	CTextureManager textureManager;
 
 	int map [WHEIGHT / 60][WWIDTH / 60];
+	int deco[WHEIGHT / 60][WWIDTH / 60];
 
 
 
